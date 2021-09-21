@@ -8,4 +8,4 @@ A avaliação proposta consiste na montagem, em Java, de um Simulador de Corrida
 
 ## Diagrama UML:
 
-![UML](F:\UTFPR\Disciplinas\Programação Orientada a Objetos\Avaliação\UML.png)
+![UML](Disciplinas/Programação Orientada a Objetos/Avaliação/UML.png)
