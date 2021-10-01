@@ -13,8 +13,6 @@ void bubblesort(int *horaInicio, int *horaFim, int n){
                     aux = horaInicio[j];
                     horaInicio[j] = horaInicio[j+1];
                     horaInicio[j+1] = aux;
-                    j=n;
-
             }
         }
     }
@@ -22,6 +20,9 @@ void bubblesort(int *horaInicio, int *horaFim, int n){
 
 void metodoGuloso(int *horaInicio, int *horaFim, int n){
     int aux[n], a,b;
+    for(a=0; a<n; a++){
+
+    }
 }
 int main()
 {
