@@ -6,6 +6,9 @@ Aqui serão encontradas listas de exercícios, resolução de exercícios, mater
 
 Durante o curso da disciplina utilizei algumas vídeo-aulas como suporte e estudo.
 
-1. 
+1. Método Guloso
 
+   [Greedy Algorithm | Algoritmo Guloso](https://www.youtube.com/watch?v=I_PxUlZh-Ag)
+
+   [Algoritmos gulosos e Problema das Tarefas Compatíveis](https://www.youtube.com/watch?v=PCMcGPknMwk)
 
