@@ -41,3 +41,8 @@ A primeira linha apresenta a mensagem “Aulas alocadas:” seguida das aulas (p
 Aulas alocadas: 0 3 7 10
 ```
 
+
+
+## Solução:
+
+Primeiramente os dados são ordenados em ordem crescente utilizando o algoritmo BubbleSort em que o a versão implementada está disponível em: [BubbleSort](https://github.com/LuizKramer/UTFPR/tree/main/Disciplinas/Algoritmos%20e%20Estrutura%20de%20Dados%201/BubbleSort).
