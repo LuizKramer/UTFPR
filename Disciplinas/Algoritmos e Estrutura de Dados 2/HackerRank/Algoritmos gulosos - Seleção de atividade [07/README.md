@@ -48,6 +48,6 @@ Aulas alocadas: 0 3 7 10
 Como os dados fornecidos estão ordenados pela hora final das aulas
 
 
-<p align="center">
-<img src="https://github.com/LuizKramer/UTFPR/blob/9b793089f51f18a515ffe1f039a488862251b9d9/Disciplinas/Algoritmos%20e%20Estrutura%20de%20Dados%202/HackerRank/Algoritmos%20gulosos%20-%20Sele%C3%A7%C3%A3o%20de%20atividade%20%5B07/Desenho%20do%20Problema.png" alt="" data-canonical-src="Disciplinas/Algoritmos e Estrutura de Dados 2/HackerRank/Algoritmos gulosos - Seleção de atividade [07/Desenho do Problema.png" width="300" height="400" />
+<p align="left">
+<img src="https://github.com/LuizKramer/UTFPR/blob/2e573ea06ee9263ce6bf4051eacbd7f13d10417e/Disciplinas/Algoritmos%20e%20Estrutura%20de%20Dados%202/HackerRank/Algoritmos%20gulosos%20-%20Sele%C3%A7%C3%A3o%20de%20atividade%20%5B07/Desenho%20do%20Problema.png" alt="" data-canonical-src="Disciplinas/Algoritmos e Estrutura de Dados 2/HackerRank/Algoritmos gulosos - Seleção de atividade [07/Desenho do Problema.png" width="450" height="300" />
 </p>
