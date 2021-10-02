@@ -1,4 +1,4 @@
-## Algoritmos gulosos - Seleção de atividade [07/11/2021]
+# Algoritmos gulosos - Seleção de atividade [07/11/2021]
 
 ## Problema Proposto:
 
@@ -43,3 +43,6 @@ Aulas alocadas: 0 3 7 10
 
 
 
+## Solução
+
+Como os dados fornecidos estão ordenados pela hora final das aulas
