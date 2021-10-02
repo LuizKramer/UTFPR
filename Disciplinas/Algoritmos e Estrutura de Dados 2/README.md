@@ -11,4 +11,16 @@ Durante o curso da disciplina utilizei algumas vídeo-aulas como suporte e estud
    [Greedy Algorithm | Algoritmo Guloso](https://www.youtube.com/watch?v=I_PxUlZh-Ag)
 
    [Algoritmos gulosos e Problema das Tarefas Compatíveis](https://www.youtube.com/watch?v=PCMcGPknMwk)
+   
+   
+   
+   
+
+## Problemas propostos e Códigos desenvolvidos:
+
+1. Método Guloso:
+
+   [Algoritmos gulosos - Dona Lurdes](https://github.com/LuizKramer/UTFPR/tree/main/Disciplinas/Algoritmos%20e%20Estrutura%20de%20Dados%202/HackerRank/Algoritmos%20gulosos%20-%20Sele%C3%A7%C3%A3o%20de%20atividade%20%5B07)
+
+2. 
 

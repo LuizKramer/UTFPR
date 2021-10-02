@@ -1,50 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-void bubblesort(int *horaInicio, int *horaFim, int n){
-    int aux,i,j;
-    for(i=0; i<n; i++){
-        for(j=0; j<n-1-i; j++){
-            if(horaFim[j]>horaFim[j+1]){
-                    aux = horaFim[j];
-                    horaFim[j] = horaFim[j+1];
-                    horaFim[j+1] = aux;
-                    aux = horaInicio[j];
-                    horaInicio[j] = horaInicio[j+1];
-                    horaInicio[j+1] = aux;
-            }
-        }
-    }
-}
-
 void metodoGuloso(int *horaInicio, int *horaFim, int n){
-    int aulasAlocadas[n], a,b;
-    int duracaoAula[n];
-    int i = 0;
-    for(a=0; a<n; a++){
-        duracaoAula[a] = horaFim[a] - horaInicio[a];
-    }
-    b = duracaoAula[0];
-    for(a=0; a<n; a++){
-        if(duracaoAula[a+1] < b){
-            aulasAlocadas[i] = a;
-            b = duracaoAula[a];
-            i++;
+    int aulasAlocadas[n], i,a,b;
+    b = horaFim[0];
+    a=1;
+    aulasAlocadas[0] = 0;
+    for(i=1; i<n ;i++){
+        if (horaInicio[i] > b){
+            aulasAlocadas[a] = i;
+            b = horaFim[i];
+            a++;
         }
     }
-    for(a=0; a<i; a++){
-        printf("%d ", aulasAlocadas[a]);
-    }
+    printf("Aulas alocadas: ");
+    for(i=0; i<a; i++)
+        printf("%d ", aulasAlocadas[i]);
+
 }
 int main()
 {
-   int n;
+   int n, i;
    scanf("%d", &n);
    int horaInicio[n], horaFim[n];
-   for(int i=0; i<n; i++){
+   for(i=0; i<n; i++){
         scanf("%d %d", &horaInicio[i], &horaFim[i]);
    }
-   bubblesort(horaInicio, horaFim, n);
-  metodoGuloso(horaInicio,horaFim,n);
+   metodoGuloso(horaInicio,horaFim,n);
 }
