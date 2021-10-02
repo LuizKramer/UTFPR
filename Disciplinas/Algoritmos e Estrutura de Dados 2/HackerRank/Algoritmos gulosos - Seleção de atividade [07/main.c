@@ -19,9 +19,22 @@ void bubblesort(int *horaInicio, int *horaFim, int n){
 }
 
 void metodoGuloso(int *horaInicio, int *horaFim, int n){
-    int aux[n], a,b;
+    int aulasAlocadas[n], a,b;
+    int duracaoAula[n];
+    int i = 0;
     for(a=0; a<n; a++){
-
+        duracaoAula[a] = horaFim[a] - horaInicio[a];
+    }
+    b = duracaoAula[0];
+    for(a=0; a<n; a++){
+        if(duracaoAula[a+1] < b){
+            aulasAlocadas[i] = a;
+            b = duracaoAula[a];
+            i++;
+        }
+    }
+    for(a=0; a<i; a++){
+        printf("%d ", aulasAlocadas[a]);
     }
 }
 int main()
@@ -33,7 +46,5 @@ int main()
         scanf("%d %d", &horaInicio[i], &horaFim[i]);
    }
    bubblesort(horaInicio, horaFim, n);
-   for(int i=0; i<n; i++){
-        printf("%d %d\n", horaInicio[i], horaFim[i]);
-   }
+  metodoGuloso(horaInicio,horaFim,n);
 }
