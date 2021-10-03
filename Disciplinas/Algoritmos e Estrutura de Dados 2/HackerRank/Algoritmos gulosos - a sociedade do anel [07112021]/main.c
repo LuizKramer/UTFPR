@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int metodoGuloso(int l, int c, int M[l][c]){
+    int i,j;
+    int pos = M[0][0];
+    int v[4] = {0,0,0,0};
+}
+
 int main()
 {
     int l, c, i, j;
@@ -11,10 +17,5 @@ int main()
             scanf("%d", &M[i][j]);
         }
     }
-     for(i=0;i<l;i++){
-        for(j=0;j<c;j++){
-            printf("%d ", M[i][j]);
-        }
-        printf("\n");
-    }
+    metodoGuloso(l,c,M);
 }
