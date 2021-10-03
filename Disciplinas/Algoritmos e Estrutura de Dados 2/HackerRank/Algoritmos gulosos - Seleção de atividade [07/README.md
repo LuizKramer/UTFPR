@@ -45,9 +45,10 @@ Aulas alocadas: 0 3 7 10
 
 ## Solução
 
-Como os dados fornecidos estão ordenados pela hora final das aulas
-
+Como os dados fornecidos estão ordenados pela hora final das aulas e representados na Figura 1, percebe-se que a primeira aula, por ter o tempo de termino menor, também se tem o primeiro horário de inicio, ou seja, ao ter os dados ordenados a primeira aula sempre entrará para a solução; em seguida é comparado o horário de inicio da aula em sequência com o horário final da última aula alocada na solução, evitando assim conflitos de horário  entre as aulas e selecionando as seguintes que irão compor a solução do problema.  
 
 <p align="left">
-<img src="https://github.com/LuizKramer/UTFPR/blob/2e573ea06ee9263ce6bf4051eacbd7f13d10417e/Disciplinas/Algoritmos%20e%20Estrutura%20de%20Dados%202/HackerRank/Algoritmos%20gulosos%20-%20Sele%C3%A7%C3%A3o%20de%20atividade%20%5B07/Desenho%20do%20Problema.png" alt="" data-canonical-src="Disciplinas/Algoritmos e Estrutura de Dados 2/HackerRank/Algoritmos gulosos - Seleção de atividade [07/Desenho do Problema.png" width="450" height="300" />
+<img src="https://github.com/LuizKramer/UTFPR/blob/2877ba7753bda7a9a01910d26aec0140760c4f79/Disciplinas/Algoritmos%20e%20Estrutura%20de%20Dados%202/HackerRank/Algoritmos%20gulosos%20-%20Sele%C3%A7%C3%A3o%20de%20atividade%20%5B07/Desenho%20do%20Problema.png" alt="" data-canonical-src="Disciplinas/Algoritmos e Estrutura de Dados 2/HackerRank/Algoritmos gulosos - Seleção de atividade [07/Desenho do Problema.png" width="450" height="300" />
+    Figura 1
 </p>
+
