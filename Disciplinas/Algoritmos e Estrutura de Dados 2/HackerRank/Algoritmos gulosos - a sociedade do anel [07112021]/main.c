@@ -17,18 +17,22 @@ int metodoGuloso(int l, int c, int M[l][c])
     int    b = 0;
     while(b <10){
 
+
         for(a=0; a<5; a++){
             //mapeamento da posição
+            if(a == 0){i--;}
+            if(a == 1){i++;j--;}
+            if(a == 2){j+=2;}
+            if(a == 3){i++;j--;}
+            if(a == 4){
+                i--;
+                iPrev = i;
+                jPrev = j;
+                printf("\niPrev: %d  jPrev:%d\n", iPrev, jPrev);
+            };
 
-
-            if(a == 1){i--;}
-            if(a == 2){i++;j--;}
-            if(a == 3){j+=2;}
-            if(a == 4){i++;j--;}
-
-            if(i>=0 && i<=5 && j>=0 && j<=5){
-                printf("%d = %d\n",(i+1)*(j+2),(iPrev+1)*(jPrev+2));
-                if((i+1)*(j+2) != (iPrev+1)*(jPrev+2)){
+            if(i>=0 && i<=5 && j>=0 && j<=5 && a!=4){
+                if(!(i == iPrev && j==jPrev)){
                     printf("%d%d: [%d]\n",i, j, M[i][j]);
                     if(M[i][j] <= aux){
                         aux = M[i][j];
@@ -37,15 +41,11 @@ int metodoGuloso(int l, int c, int M[l][c])
                     }
                 }
             }
-            if(a == 0){
-                iPrev = i;
-                jPrev = j;
-                printf("\nPREV %d%d\n", i, j);
-            }
         }
         i = iProx;
         j = jProx;
         printf("\nPROX %d%d\n", iProx, jProx);
+
         b++;
     }
     return aux;
