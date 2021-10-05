@@ -16,7 +16,7 @@ int metodoGuloso(int l, int c, int M[l][c])
     j=0;
     int    b = 0;
     while(b <10){
-
+        aux = 100;
 
         for(a=0; a<5; a++){
             //mapeamento da posição
@@ -33,7 +33,7 @@ int metodoGuloso(int l, int c, int M[l][c])
 
             if(i>=0 && i<=5 && j>=0 && j<=5 && a!=4){
                 if(!(i == iPrev && j==jPrev)){
-                    printf("%d%d: [%d]\n",i, j, M[i][j]);
+                    printf("%d%d: [%d] <= %d\n",i, j, M[i][j], aux);
                     if(M[i][j] <= aux){
                         aux = M[i][j];
                         iProx = i;
