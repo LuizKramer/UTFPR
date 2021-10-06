@@ -1,8 +1,19 @@
 import numpy as np
+import statistics as sts
+import pandas as pd
+from matplotlib import pyplot as plt
 
 
-def mediaAritimetica(v):
+def moda(v):
+    return sts.mode(v)
+
+
+def mediaS(v):
     return np.mean(v)
+
+
+def mediana(v):
+    return np.median(v)
 
 
 def mediaPonderada(v, pesos):
@@ -14,15 +25,15 @@ def mediaPonderada(v, pesos):
 
 
 def desvioPadrao(v):
-    media = mediaAritimetica(v)
+    media = mediaS(v)
     eqDP = []
     for i in range(0, len(v)):
         eqDP.append(pow((v[i] - media), 2))
     n = len(v) - 1
-    return np.sqrt(sum(eqDP)/ n)
+    return np.sqrt(sum(eqDP) / n)
 
 
 if __name__ == '__main__':
-    dados = [7, 8, 6, 10, 5, 9, 4, 12, 7, 8]
-    print(mediaAritimetica(dados))
+    dados = [30, 25, 10, 5, 2]
+    print(mediaS(dados))
     print(desvioPadrao(dados))
