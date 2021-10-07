@@ -2,6 +2,7 @@ import numpy as np
 import statistics as sts
 import pandas as pd
 from matplotlib import pyplot as plt
+import seaborn as sns
 
 
 def moda(v):
@@ -31,6 +32,10 @@ def desvioPadrao(v):
         eqDP.append(pow((v[i] - media), 2))
     n = len(v) - 1
     return np.sqrt(sum(eqDP) / n)
+
+
+def amplitude(v):
+    return max(v) - min(v)
 
 
 if __name__ == '__main__':
