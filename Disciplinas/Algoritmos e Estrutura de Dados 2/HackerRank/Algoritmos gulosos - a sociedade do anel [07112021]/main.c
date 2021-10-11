@@ -7,7 +7,11 @@ int metodoGuloso(int l, int c, int M[l][c])
     int i,j, a = 0;
     i=4;
     j=2;
-    int posPrev[2]= {l,c};
+    int d =0;
+    int aux = 100;
+    int posPrev[(l*c)];
+    int indPosPrev =0;
+    while(d != 1){
         for(a=0; a<4; a++){
             //mapeamento da posição
             if(a == 0){i--;}
@@ -17,8 +21,16 @@ int metodoGuloso(int l, int c, int M[l][c])
 
             if(i>=0 && i<=5 && j>=0 && j<=5){
                 printf("%d%d: [%d]\n",i, j, M[i][j]);
+                if(M[i][j]<=aux){
+                    aux = M[i][j];
+                }
             }
         }
+        i--;
+        posPrev[d] = (i+2) * (j+5);
+        printf("\naux: %d\n", aux);
+        d++;
+    }
     return 0;
 }
 
