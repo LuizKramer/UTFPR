@@ -30,6 +30,8 @@ Durante o curso da disciplina utilizei algumas vídeo-aulas como suporte e estud
 1. Método Guloso:
 
    [Algoritmos gulosos - Dona Lurdes](https://github.com/LuizKramer/UTFPR/tree/main/Disciplinas/Algoritmos%20e%20Estrutura%20de%20Dados%202/HackerRank/Algoritmos%20gulosos%20-%20Sele%C3%A7%C3%A3o%20de%20atividade%20%5B07)
+   
+   [Algoritmos gulosos - A sociedade do anel](https://github.com/LuizKramer/UTFPR/tree/main/Disciplinas/Algoritmos%20e%20Estrutura%20de%20Dados%202/HackerRank/Algoritmos%20gulosos%20-%20a%20sociedade%20do%20anel%20%5B07112021%5D)
 
 2. 
 
