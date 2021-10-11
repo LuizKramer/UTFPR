@@ -54,22 +54,6 @@ O custo total do deslocamento de M[0][0] até M[l - 1][c - 1] utilizando soluç�
 
 Inicialmente foi montado um algoritmo para mapear as posições em volta da posição atual, não sendo possível Bilbo se mover na diagonal é somente necessário verificar as 4 posições em sua volta, assim, via [teste de mesa](https://github.com/LuizKramer/UTFPR/blob/main/Disciplinas/Algoritmos%20e%20Estrutura%20de%20Dados%202/HackerRank/Algoritmos%20gulosos%20-%20a%20sociedade%20do%20anel%20%5B07112021%5D/Teste_de_mesa.txt) foi determinado o valor dos índices que deveriam ser colocados na matriz para que esta retornasse o valor contido nestas posições.  Também foi implementada uma restrição em os dados não poderiam ser manipulados caso fossem resultar em um escopo fora da matriz, ou seja, quando o valor tanto das linhas(l) quanto das colunas(c) está fora do domínio (x>0 e x<N), com N sendo a ordem da matriz e x sendo o valor permitido para l e c.
 
-Sendo l - linhas, c = colunas e v = valor contido na posição da matriz:
-
-Caso primeira posição:    
-  l  c   v
-M\[0][0] = 0; // FIXO
-M\[0][1] = 1; l   c+1    
-M\[1][0] = 2; l+1 c
-
-Caso posição entre 3 valores;
-      l  c       v  l  c
-M\[1][2] = 3; - --- Posição atual
-M\[0][2] = 2; -1 +0  
-M\[1][1] = 1; +0 -1 -- Escolha
-M\[1][3] = 1; +0 +1 
-M\[2][2] = 4; +1 +0
-
 Em seguida foi adicionado um vetor que recebia as posições em que Bilbo já passou, mas para isso foi necessário mapear a matriz a partir dos índices de suas linhas e colunas, que aqui vamos atribuir o nome de i e j respectivamente. Assim utilizando a formula: ((i+1) * l +1)+(( j-c )) é gerado um valor distinto para cada posição dentro da matriz. Por fim só resta comparar os valores no vetor com a posição atual em cada verificação.
 
 
