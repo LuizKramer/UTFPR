@@ -14,6 +14,7 @@ bool verificaPrev(int *v, int i, int j, int l, int c, int d){
 
 int metodoGuloso(int l, int c, int M[l][c])
 {
+    int nCasas = l*c;
     if(l>c) // Requisito para funcionamento da formula
        c = c +(l - c);
 
@@ -26,8 +27,9 @@ int metodoGuloso(int l, int c, int M[l][c])
     posPrev[0] = -1;
     int posNext[2];
     int indPosPrev =0;
-    while(d != 10){
-        printf("posAtual: %d%d\n", i, j);
+    int somaPos = 0;
+    for(int b =0; b<nCasas; b++){
+            printf("posAtual: %d%d\n", i, j);
         for(a=0; a<4; a++){
             //mapeamento da posição
             if(a == 0){i--;}
@@ -38,7 +40,6 @@ int metodoGuloso(int l, int c, int M[l][c])
             if(i>=0 && i<=5 && j>=0 && j<=5){
                 printf("%d%d: [%d]\n",i, j, M[i][j]);
                 if(M[i][j]<=aux){
-
                     if(verificaPrev(posPrev, i, j, l, c, d)){
                         aux = M[i][j];
                         posNext[0] = i;
@@ -47,7 +48,13 @@ int metodoGuloso(int l, int c, int M[l][c])
                 }
             }
         }
+
         i--;
+        printf("M[i][j]: %d\n", M[i][j]);
+        somaPos = somaPos + M[i][j];
+        if(i == l-1 && j == c-1){
+            return somaPos;
+        }
         posPrev[d] = (((i+1)*l+1)+((j-c)));
         i = posNext[0];
         j = posNext[1];
@@ -56,7 +63,7 @@ int metodoGuloso(int l, int c, int M[l][c])
         d++;
         printf("\n-------------------\n");
     }
-    return 0;
+    printf("sem solucao");
 }
 
 int main()
