@@ -15,6 +15,7 @@ Durante o curso da disciplina utilizei algumas vídeo-aulas como suporte e estud
 2. Divisão e conquista
 
    [Divisão e conquista](https://www.youtube.com/watch?v=BCNTkGtNfDw)
+   [Divisão e Conquista - parte 2 (análise - soma máxima de subsequência)](https://www.youtube.com/watch?v=2vbPjWUR3PQ)
 
 3. 
 
