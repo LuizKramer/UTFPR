@@ -11,9 +11,17 @@ Durante o curso da disciplina utilizei algumas vídeo-aulas como suporte e estud
    [Greedy Algorithm | Algoritmo Guloso](https://www.youtube.com/watch?v=I_PxUlZh-Ag)
 
    [Algoritmos gulosos e Problema das Tarefas Compatíveis](https://www.youtube.com/watch?v=PCMcGPknMwk)
+
+2. Divisão e conquista
+
+   [Divisão e conquista](https://www.youtube.com/watch?v=BCNTkGtNfDw)
+
+3. 
+
    
+
    
-   
+
    
 
 ## Problemas propostos e Códigos desenvolvidos:
