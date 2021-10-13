@@ -38,7 +38,15 @@ def amplitude(v):
     return max(v) - min(v)
 
 
+def pizzaChart(rotulos, valores):
+    plt.pie(x=valores, labels=rotulos, autopct='%1.1f%%', startangle=90)
+    plt.show()
+
+
+
 if __name__ == '__main__':
-    dados = [30, 25, 10, 5, 2]
+    rotulos = ['Moradia', 'Mobilidade', 'Alimentos', 'Estudos']
+    dados = [30, 30, 30, 10]
     print(mediaS(dados))
     print(desvioPadrao(dados))
+    pizzaChart(rotulos, dados)
