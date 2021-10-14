@@ -4,7 +4,6 @@
 int buscabin(int *vet, int N, int chave){
     int inicio = 0;
     int mid = (inicio + N)/2;
-
     while(inicio <= N){
 
         if(chave == vet[mid]){
