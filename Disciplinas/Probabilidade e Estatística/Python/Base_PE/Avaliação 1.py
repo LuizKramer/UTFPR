@@ -25,6 +25,6 @@ x.to_csv(r"F:\UTFPR\Disciplinas\Probabilidade e Estatística\Python\Base_PE\tabe
 print('\n'+ str(x))
 
 Base.pizzaChart(label, horas, titulo)
-Base.histograma(data['Horas'], 10)
+Base.histograma(data['Horas'], 10, 'Tempo de Exposição')
 
 

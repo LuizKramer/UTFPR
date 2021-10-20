@@ -44,8 +44,11 @@ def pizzaChart(rotulos, valores, titulo):
     plt.show()
 
 
-def histograma(dados, bins):
+def histograma(dados, bins, titulo):
     plt.hist(dados, bins, edgecolor='black')
+    plt.title(titulo)
+    plt.ylabel('Frequência')
+    plt.xlabel('Horas')
     plt.show()
 
 
