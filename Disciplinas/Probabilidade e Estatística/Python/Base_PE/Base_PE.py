@@ -2,7 +2,7 @@ import numpy as np
 import statistics as sts
 import pandas as pd
 from matplotlib import pyplot as plt
-import seaborn as sns
+
 
 
 def moda(v):
@@ -44,10 +44,53 @@ def pizzaChart(rotulos, valores, titulo):
     plt.show()
 
 
+def histograma(dados, bins):
+    plt.hist(dados, bins, edgecolor='black')
+    plt.show()
+
+
+def tabelaFrequencia(dados):
+
+    dados = sorted(dados)
+    c1 = list(set(dados))
+    c2 = []
+    c3 = []
+    c4 = []
+    c5 = []
+    total = 0
+    for i in c1:
+       if(dados.count(i)>1):
+            c2.append(dados.count(i))
+
+    for i in range(0, len(c1)):
+        total = total + c2[i]
+
+    c3.append(c2[0])
+    for i in range(1, len(c1)):
+        c3.append(c2[i]+c3[i-1])
+
+    for i in range(0, len(c1)):
+        c4.append((c2[i]/total)*100)
+
+
+    c5.append(c4[0])
+    for i in range(1, len(c1)):
+        c5.append(c4[i]+c5[i-1])
+
+    data = {
+        'Horas': c1,
+        'fi': c2,
+        'Fi': c3,
+        'fr': c4,
+        'Fri': c5
+    }
+    x = pd.DataFrame(data)
+    return x
+
+
 
 if __name__ == '__main__':
-    rotulos = ['Moradia', 'Mobilidade', 'Alimentos', 'Estudos']
-    dados = [30, 30, 30, 10]
-    print(mediaS(dados))
-    print(desvioPadrao(dados))
-    pizzaChart(rotulos, dados, 'Pizza')
+
+    dados = [1, 2, 3, 3, 3, 4, 5, 1, 2, 0, 50, 35, 45, 15, 50, 50]
+    tabelaFrequencia(dados)
+
