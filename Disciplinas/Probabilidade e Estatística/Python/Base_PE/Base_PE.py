@@ -94,6 +94,11 @@ def tabelaFrequencia(dados):
 
 if __name__ == '__main__':
 
-    dados = [1, 2, 3, 3, 3, 4, 5, 1, 2, 0, 50, 35, 45, 15, 50, 50]
-    tabelaFrequencia(dados)
+    dados = [13,12,9,7,7,2]
+    print(mediaS(dados))
+    print(mediana(dados))
+    print(moda(dados))
+    print(desvioPadrao(dados))
+    print(pow(desvioPadrao(dados),2))
+
 

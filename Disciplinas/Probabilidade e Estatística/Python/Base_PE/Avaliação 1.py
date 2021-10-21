@@ -1,8 +1,9 @@
 import Base_PE
 import Base_PE as Base
 import pandas as pd
-
-data = pd.read_csv('Dados PE - Página1.csv')
+url = 'https://raw.githubusercontent.com/LuizKramer/UTFPR/main/Disciplinas/Probabilidade%20e%20Estat%C3%ADstica/Python/Base_PE/Dados%20PE%20-%20P%C3%A1gina1.csv'
+data = pd.read_csv(url, index_col=0)
+print(data)
 
 df = pd.DataFrame(data[['Dispositivo', 'Horas']])
 dfM = df.groupby('Dispositivo', as_index=False).mean()
@@ -15,7 +16,7 @@ print('Desvio Padrão: ' + '{:.2f}'.format(round(Base.desvioPadrao(data['Horas']
 
 horas = dfM['Horas']
 label = dfM['Dispositivo']
-titulo = 'Tempo desprendido em cada dispositivo'
+titulo = 'Tempo despendido em cada dispositivo'
 
 dados = list(data['Horas'])
 
