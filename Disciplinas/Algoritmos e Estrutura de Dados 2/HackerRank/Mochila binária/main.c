@@ -2,7 +2,7 @@
 #include <stdlib.h>
 # define max(a,b) a > b ? a : b
 
-int progD(int qtd, int *v, int *p, int cap, int m[qtd][cap]){
+int progD(int qtd, int *v, int *p, int cap){
     int usa, naoUsa;
     if(m[qtd][cap]==-1){
         if(p[qtd]>cap){
@@ -30,14 +30,7 @@ int main()
         scanf("%d %d", &peso[i], &valor[i]);
     }
 
-    for(i=0;i<qtdObj; i++){
-        for(j=0;j<capacidade; j++){
-            m[i][j]=-1;
-            if(j==0 || i==0)
-                m[i][j] =0;
-        }
-    }
 
-    printf("%d", progD(qtdObj, valor, peso, capacidade, m));
+    printf("%d", progD(qtdObj, valor, peso, capacidade));
 
 }
