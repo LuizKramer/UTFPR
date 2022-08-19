@@ -8,14 +8,27 @@ typedef struct{
 
 
 void greedy(tarefas * a, int N){
-    int v[N];
+    int v[N], pos[N];
     for(int i=0; i<N; i++){
         v[i] = a[i].d - a[i].e;
     }
 
     for(int i=0; i<N; i++){
-        printf("%d ", v[i]);
+       
+         for(int j=0; j<N; j++){
+            if(v[i] < v[j+1]){
+                pos[i] = j;
+                printf("%d ", j);
+            }
+        }
+
     }
+
+    for(int i = 0; i<N; i++){
+        printf("%d ", pos[i]); 
+    }
+
+
       
 }
 
