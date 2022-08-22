@@ -10,7 +10,7 @@ typedef struct{
 
 //Implementei durante aula 22/08/2022 
 int maiorValor(int * V, int N){
-    int i, j, aux, indice=0;
+    int i, aux, indice=0;
     aux = V[0];
     for(i=0; i<N; i++){
             if(aux < V[i]){
@@ -23,7 +23,7 @@ int maiorValor(int * V, int N){
 
 
 void greedy(tarefas * a, int N){
-    int v[N], pos[N], b=0, i; 
+    int v[N], pos[N], i; 
     pos[0]=0;
     for(int i=0; i<N; i++){
         v[i] = a[i].d - a[i].e;
@@ -38,6 +38,19 @@ void greedy(tarefas * a, int N){
     }
 }
 
+void atraso(tarefas * a, int N){
+    int c=0, b = 0, res;
+    for(int i = 0; i<N; i++){
+        b += a[i].d;
+        c += a[i].e; 
+    }
+    if((b-c)>0)
+        res = 0;
+    else 
+        res = (b-c)*-1; 
+
+    printf("%d", res);
+}
 
 int main(){
     int N, i;
@@ -48,6 +61,7 @@ int main(){
         scanf("%d", &tarefa[i].e);
         scanf("%d", &tarefa[i].d);
     }
-
-    greedy(tarefa, N);    
+    greedy(tarefa, N);  
+    printf("\n"); 
+    atraso(tarefa, N); 
 }
