@@ -28,6 +28,7 @@ void metodoGuloso(aulas * aulas, int n){
     b = aulas[0].horaFim;
     a=1;
     aulasAlocadas[0] = 0;
+
     for(i=1; i<n ;i++){
         if (aulas[i].horaInicio > b){
             aulasAlocadas[a] = i;
