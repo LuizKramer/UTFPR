@@ -1,38 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+
 
 int divisaoEConquista(int * v1, int * v2, int ini, int fim){
-    int mid;
-    if((fim - ini) <= 1){
-         return v1[ini];
+    
+    int mid, dist=0;
+    if(fim == ini){
+
+        dist = abs(v1[ini] - v2[fim]);
+        return  dist;
     }
     else{
-    printf("\n");
-
-    mid = (fim - ini)/2;
-  
-        printf("primeira: %d\n", divisaoEConquista(v1, v2, ini, mid));
-    printf("\n------------\n");
-        printf("segunda: %d\n", divisaoEConquista(v1, v2, mid+1, fim));
+        mid = (fim + ini)/2;
+        dist += divisaoEConquista(v1, v2, ini, mid);
+        dist += divisaoEConquista(v1, v2, mid+1, fim);
     }
-   
-   
-
-   
     
+    return dist;
+   
 }
 
 int main(){
-    int N;
+    int N, i;
     scanf("%d", &N);
+
     int v1[N], v2[N];
 
-    for (int i = 0; i < N; i++){
-        scanf("%d %d", &v1[i], &v2[i]);
+    for (i = 0; i < N; i++){
+        scanf("%d", &v1[i]);
+    }
+    
+     for (i = 0; i < N; i++){
+        scanf("%d", &v2[i]);
     }
 
 
-    divisaoEConquista(v1, v2, 0, N);
-  
+    printf("%d", divisaoEConquista(v1, v2, 0, N));  
 
 }
