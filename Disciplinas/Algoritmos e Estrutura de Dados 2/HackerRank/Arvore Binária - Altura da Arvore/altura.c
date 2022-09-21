@@ -11,16 +11,16 @@ Node* inserir(int item, Node* tree);
 
 void liberar_arvore(Node* tree);
 
-Node * nos_folhas(Node * tree);
+int altura(Node * tree);
 
 struct Node{
-	int item; // chave
-	struct Node *left; // referência para a sub-árvore esquerda
-	struct Node *right; // referência para a sub-árvore direita
+	int item; 
+	struct Node *left; 
+	struct Node *right; 
 };
 
 
-// criar nó
+
 Node* criar(int item){
 	Node * tree = (Node *) malloc(sizeof(Node));
 	
@@ -32,19 +32,15 @@ Node* criar(int item){
 }
 
 
-// inserir um novo elemento na árvore
+
 Node* inserir(int item, Node* tree){
-	// se o nó é nulo, basta criar um novo
+
 	if (tree == NULL)
 		tree = criar(item);
-	// Se o valor do nó for maior que o do item a ser inserido,
-	// uma chamada recursiva para a sub-árvore esquerda é
-	// chamada
+
 	else if (item < tree->item)
 		tree->left = inserir(item, tree->left);
-	// Se o valor do nó for menor que o do item a ser inserido,
-	// uma chamada recursiva para a sub-árvore direita é
-	// chamada
+
 	else if (item > tree->item)
 		tree->right = inserir(item, tree->right);
 		
@@ -52,9 +48,6 @@ Node* inserir(int item, Node* tree){
 }
 
 
-
-
-// Desalocar todos os nós da árvore
 void liberar_arvore(Node* tree){
     if (tree != NULL){
         liberar_arvore(tree->left);
@@ -63,15 +56,15 @@ void liberar_arvore(Node* tree){
     }
 }
 
-Node * nos_folhas(Node * tree){
+int altura(Node * tree){
     if(tree == NULL){
-        return;
+        return 0;
     }
-    if(tree->left == NULL && tree->right == NULL){
-        printf("%d ", tree->item);
-    }
-    nos_folhas(tree->left);
-    nos_folhas(tree->right);
+   
+    int left = altura(tree->left);
+    int right = altura(tree->right);
+
+    return left > right? left +1 : right + 1; 
 
 }
 
@@ -86,6 +79,6 @@ int main(){
          scanf("%d", &item);
          inserir(item, tree); 
     }
-    nos_folhas(tree);
+    printf("%d", altura(tree) - 1);
     liberar_arvore(tree);
 }
