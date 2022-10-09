@@ -2,14 +2,14 @@ clear;
 clc;
 
 function res = f(x)
-  res = x^3 + 3*(x^2) -1;
+  res = x^2 - 2;
 endfunction
 
-a = -2;
-b = 0;
+a = 1;
+b = 2;
 
 n = 1000;
-tol = 5*(10^(-5000000));
+tol = 5*(10^(-5));
 % exemplo: f=@(x) x^3-9*x+3; a=0; b=1; tol=0.005; maxit=1000;
 
 for k=1:n

@@ -5,7 +5,7 @@
 #include <limits.h>
 #define max(a,b) a > b ? a : b 
 
-int maior_preco(int precos[], int tam_haste){
+int maior_preco(int int precos[], int tam_haste){
     int i, j, q;
     int r[tam_haste + 1];
     

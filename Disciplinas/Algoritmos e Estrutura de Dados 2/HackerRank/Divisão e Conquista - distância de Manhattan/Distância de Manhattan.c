@@ -13,8 +13,7 @@ int divisaoEConquista(int * v1, int * v2, int ini, int fim){
     }
     else{
         mid = (fim + ini)/2;
-        dist += divisaoEConquista(v1, v2, ini, mid);
-        dist += divisaoEConquista(v1, v2, mid+1, fim);
+        dist = divisaoEConquista(v1, v2, ini, mid) + divisaoEConquista(v1, v2, mid+1, fim);
     }
     
     return dist;
