@@ -133,16 +133,25 @@ void imprimirInfix(NodeAVL* tree){
     }
 }
 
+int balanceamento(NodeAVL * tree){
+	if (tree == NULL){
+		return 0;
+    }
+	
+	return tree->fb + balanceamento(tree->left) +  balanceamento(tree->right);
+	
+}
+
 int main(){
     int N;
     scanf("%d", &N);
     int item; 
-    int g = 0;
+    int *g = 0;
     scanf("%d", &item);
     NodeAVL * tree = criar_AVL(item);
     for(int i = 1; i < N; i++){
         scanf("%d", &item);
-        inserirAVL(tree, item, &g);
+      tree = inserirAVL(tree, item, &g);
     }
-    imprimirInfix(tree);
+    printf("%d", balanceamento(tree));
 }
