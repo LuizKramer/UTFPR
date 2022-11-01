@@ -190,7 +190,7 @@ int conta_chaves_folha(NodeB * tree){
 
         for (i = 0; i < tree->nro_chaves && tree->eh_no_folha; i++)
         {
-            a ++;
+            a++;
         }
         for (i = 0; i <= tree->nro_chaves; i++)
         {
