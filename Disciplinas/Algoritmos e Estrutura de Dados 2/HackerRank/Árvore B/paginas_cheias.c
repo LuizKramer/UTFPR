@@ -180,6 +180,37 @@ NodeB * inserir(NodeB *tree, int key){
     return tree;
 }
 
-int main(){
-    
+int qtd_cheias(NodeB *tree)
+{
+    int i;
+    int a = 0;
+    if (tree != NULL)
+    { 
+
+        if(tree->nro_chaves == N-1){
+            return 1;
+        }
+
+        for (i = 0; i <= tree->nro_chaves; i++)
+        {
+            return a + qtd_cheias(tree->filhos[i]);
+        }
+    }
+    return 0;
+}
+
+
+int main()
+{
+    int item, n;
+ 
+    scanf("%d", &n);
+ 
+    NodeB *tree = criar();
+ 
+    for (int i = 0; i < n; i++){
+        scanf("%d", &item);
+        tree = inserir(tree, item);
+    }
+    printf("%d", qtd_cheias(tree));
 }
