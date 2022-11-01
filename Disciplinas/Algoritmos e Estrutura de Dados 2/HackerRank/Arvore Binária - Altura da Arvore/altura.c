@@ -34,17 +34,23 @@ Node* criar(int item){
 
 
 Node* inserir(int item, Node* tree){
-
-	if (tree == NULL)
-		tree = criar(item);
-
-	else if (item < tree->item)
-		tree->left = inserir(item, tree->left);
-
-	else if (item > tree->item)
-		tree->right = inserir(item, tree->right);
-		
-	return tree;
+    Node * aux = tree;
+    Node * prev = tree;
+	if (aux == NULL)
+		aux = criar(item);
+    else if (aux->item != item){
+        while(aux != NULL){
+            if(item < aux->item){
+                aux = aux->left;
+            }
+            else{
+                aux = aux->right;   
+            }
+        }
+        aux->item = item;
+    }
+    return aux;
+	
 }
 
 
