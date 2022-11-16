@@ -2,7 +2,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdlib.h>
-
+#include <limits.h>
 
 /***************************************************************/
 typedef struct Cell Cell;
@@ -309,30 +309,37 @@ GrafoMA * LAtoMA(GrafoLA * LA){
     return NULL;
 }
 
+void busca_em_largura(GrafoLA * LA, int vertice){
+    int N = LA->V;
+    int pai[N], dist[N], i;
+
+
+    for(i = 0; i < N ; i++){
+        pai[i] = NULL;
+        dist[i] = INT_MAX;
+    }
+    dist[vertice] = 0;
+    
+}
+
 int main(){
     int N, item;
     scanf("%d", &N);
     item = 0;
     GrafoLA * LA = iniciar_grafoLA(N);
-
+   
     for(int i = 0; i < N; i++){
         do{
             scanf("%d", &item);
-            if(item != -1)
+            if(item != -1){
                 inserir_arestaLA(LA, i, item);
+            
+            }
         }
         while(item != -1);
     }
-   
-    GrafoMA * GM = LAtoMA(LA);
-
-
-        for(int i=0; i < LA->V; i++){
-            for(int j=0; j < LA->V; j++){
-                printf("%d ", GM->mat[i][j]);
-            }
-            printf("\n");
-        }
-
+     int vertice;
+     scanf("%d", &vertice);
+    busca_em_largura(LA, vertice);
 }
 
