@@ -127,7 +127,7 @@ Node* inserir(Node* tree, int value, int *grown){
 void imprimir(Node * tree){
     if(tree != NULL){
         imprimir(tree->left);
-            printf("%d", tree->item);
+            printf("%d", tree->item); 
         imprimir(tree->right);
     }
 }

@@ -8,6 +8,7 @@
 typedef struct Cell Cell;
 typedef struct Lista Lista;
 typedef struct GrafoLA GrafoLA;
+typedef struct GrafoMA GrafoMA;
 
 
 struct Cell{
@@ -24,6 +25,12 @@ struct GrafoLA{
    int V;
    int A;
    Lista **adj;
+};
+
+struct GrafoMA{
+   int V;
+   int A;
+   int ** mat;
 };
 /***************************************************************/
 // Lista encadeada
@@ -118,9 +125,9 @@ int remover_na_lista(int key, Lista *l){
             }
 
             if (auxA->key == key)
-            	auxP->next = auxA->next;
+                auxP->next = auxA->next;
             else
-            	auxA = NULL;
+                auxA = NULL;
         }
 
         if (auxA != NULL)
@@ -173,6 +180,17 @@ int liberar_lista(Lista *l){
 /***************************************************************/
 // Grafo
 
+static int** iniciar_MA(int n){
+    int i, j;
+    int **mat = (int**) malloc(n * sizeof(int*));
+
+    for (i = 0; i < n; i++)
+        mat[i] = (int*) calloc(n, sizeof(int));
+
+    return mat;
+}
+
+
 static Lista** iniciar_LA(int n){
     int i;
     Lista **adj = (Lista**) malloc(n * sizeof(Lista*));
@@ -193,6 +211,17 @@ GrafoLA* iniciar_grafoLA(int v){
 
     return G;
 }
+
+GrafoMA* iniciar_grafoMA(int v){
+    GrafoMA* G = (GrafoMA*) malloc(sizeof(GrafoMA));
+
+    G->V = v;
+    G->A = 0;
+    G->mat = iniciar_MA(G->V);
+
+    return G;
+}
+
 
 
 int aresta_existeLA(GrafoLA* G, int v1, int v2){
@@ -251,14 +280,15 @@ void liberarGLA(GrafoLA* G){
     }
 }
 
-void LAtoMA(GrafoLA * LA){
+GrafoMA * LAtoMA(GrafoLA * LA){
     if(LA != NULL){
         int MA[LA->V][LA->V];
         Cell * aux;
-
+        GrafoMA * GM = iniciar_grafoMA(LA->V);
+        
         for(int i=0; i < LA->V; i++){
             for(int j=0; j < LA->V; j++){
-                MA[i][j] = 0;
+                GM->mat[i][j] = 0;
             }
         }
 
@@ -267,22 +297,18 @@ void LAtoMA(GrafoLA * LA){
             while (aux != NULL){
                   
                     
-                    MA[i][aux->key] = 1;
+                    GM->mat[i][aux->key] = 1;
              
                     aux = aux->next;                
             }
      
         }
+        
 
-        for(int i=0; i < LA->V; i++){
-            for(int j=0; j < LA->V; j++){
-                printf("%d ", MA[i][j]);
-            }
-            printf("\n");
-        }
 
+        return GM;
     }
-
+    return NULL;
 }
 
 int main(){
@@ -300,7 +326,15 @@ int main(){
         while(item != -1);
     }
    
-    LAtoMA(LA);
+    GrafoMA * GM = LAtoMA(LA);
+
+
+        for(int i=0; i < LA->V; i++){
+            for(int j=0; j < LA->V; j++){
+                printf("%d ", GM->mat[i][j]);
+            }
+            printf("\n");
+        }
 
 }
 
