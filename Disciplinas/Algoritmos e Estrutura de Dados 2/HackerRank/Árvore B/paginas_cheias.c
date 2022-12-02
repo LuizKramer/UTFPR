@@ -180,21 +180,29 @@ NodeB * inserir(NodeB *tree, int key){
     return tree;
 }
 
-int qtd_cheias(NodeB *tree)
+int conta_par(NodeB *tree)
 {
+    // Inicialização de variáveis
     int i;
     int a = 0;
-    if (tree != NULL)
+
+
+    if (tree != NULL) // Verifica se a árvore não é nula
     { 
 
-        if(tree->nro_chaves == N-1){
-            return 1;
+        for (i = 0; i < tree->nro_chaves; i++) // percorre todas as chaves da página
+        {
+            // verifica se a chave atual é par, se for é incrementado 1 a variável a, senão nada é feito
+            ((tree->chaves[i]%2) == 0) ? a++ : 0; 
+        }
+        
+         // percorre todas as páginas
+        for (i = 0; i <= tree->nro_chaves; i++) // itera entre os nós da página
+        {
+            a = a + conta_par(tree->filhos[i]); // chamada recursiva e incremento do valor dos pares
         }
 
-        for (i = 0; i <= tree->nro_chaves; i++)
-        {
-            return a + qtd_cheias(tree->filhos[i]);
-        }
+        return a; //retorno da quantidade de números pares 
     }
     return 0;
 }
