@@ -4,105 +4,34 @@
 #include <stdlib.h>
 #include <limits.h>
 
+
 /***************************************************************/
 typedef struct Cell Cell;
 typedef struct Lista Lista;
 typedef struct GrafoLA GrafoLA;
-typedef struct GrafoMA GrafoMA;
+typedef struct FilaE FilaE;
 
-struct Cell{
-    int key;
-    struct Cell *next;
-};
-
-
-struct GrafoMA{
+struct GrafoLA{
     int V, A;
     int *cor;
     int *pai;
     int *d;
-    int *f;
-    int **mat;
+    Lista **adj;
 };
 
+struct Cell{
+    int key;
+    Cell *next;
+};
+
+struct FilaE{
+    Cell *inicio;
+    Cell *fim;
+};
 
 struct Lista{
     Cell *head;
 };
-
-struct GrafoLA{
-   int V;
-   int A;
-    int *cor;
-    int *pai;
-    int *d;
-    int *f;
-   Lista **adj;
-};
-
-
-static int** iniciar_MA(int n){
-    int i, j;
-    int **mat = (int**) malloc(n * sizeof(int*));
-
-    for (i = 0; i < n; i++)
-        mat[i] = (int*) calloc(n, sizeof(int));
-
-    return mat;
-}
-
-GrafoMA* iniciar_grafoMA(int v){
-    GrafoMA* G = (GrafoMA*) malloc(sizeof(GrafoMA));
-
-    G->V = v;
-    G->A = 0;
-    G->cor = (int*) malloc(sizeof(int) * v);
-    G->pai = (int*) malloc(sizeof(int) * v);
-    G->d = (int*) malloc(sizeof(int) * v);
-    G->f = (int*) malloc(sizeof(int) * v);
-    G->mat = iniciar_MA(G->V);
-
-    return G;
-}
-
-
-GrafoMA * LAtoMA(GrafoLA * LA){
-    if(LA != NULL){
-        int MA[LA->V][LA->V];
-        Cell * aux;
-        GrafoMA * GM = iniciar_grafoMA(LA->V);
-        
-        for(int i=0; i < LA->V; i++){
-            for(int j=0; j < LA->V; j++){
-                GM->mat[i][j] = 0;
-            }
-        }
-
-        for(int i = 0; i < LA->V; i++){
-            aux = LA->adj[i]->head;
-            while (aux != NULL){
-                  
-                    
-                    GM->mat[i][aux->key] = 1;
-             
-                    aux = aux->next;                
-            }
-     
-        }
-        
-        return GM;
-    }
-    return NULL;
-}
-
-Lista* criar_lista(){
-    Lista* l = (Lista*) malloc(sizeof(Lista));
-
-    l->head = NULL;
-
-    return l;
-}
-
 
 Cell* criar_celula(int key){
     Cell *c = (Cell*) malloc(sizeof(Cell));
@@ -111,6 +40,94 @@ Cell* criar_celula(int key){
     c->next = NULL;
 
     return c;
+}
+
+FilaE* criar_filaE(){
+    FilaE *f = (FilaE*) malloc(sizeof(FilaE));
+    
+    f->inicio = NULL;
+    f->fim = NULL;
+    
+    return f;
+}
+
+
+int filaE_vazia(FilaE* f){
+    return (f == NULL) || (f->inicio == NULL);
+}
+
+
+void enfileirar(int key, FilaE* f){
+    Cell *aux;
+
+    if (f == NULL)
+        f = criar_filaE();
+
+    aux = criar_celula(key);
+
+    if (f->inicio == NULL)
+        f->inicio = f->fim = aux;
+    else{
+        f->fim->next = aux;
+        f->fim = f->fim->next;
+    }
+
+}
+
+
+int desenfileirar(FilaE* f){
+    Cell *aux;
+    int key = INT_MIN;
+
+    if (!filaE_vazia(f)){
+        aux = f->inicio;
+
+        f->inicio = aux->next;
+        
+        key = aux->key;
+
+        free(aux);
+    }
+
+    return key;
+}
+
+
+void imprimir_fila(FilaE* f){
+    Cell *aux;
+
+    if (!filaE_vazia(f)){
+        aux = f->inicio;
+
+        while (aux != NULL){
+            printf("%d ", aux->key);
+            aux = aux->next;
+        }
+        
+        printf("\n");
+    }
+}
+
+
+int liberar_filaE(FilaE* f){
+    if (!filaE_vazia(f)){
+        while (f->inicio != NULL)
+            desenfileirar(f);
+
+        free(f);
+
+        return 1;
+    }
+
+    return 0;
+}
+
+Lista* criar_lista(){
+    Lista* l = (Lista*) malloc(sizeof(Lista));
+
+    l->head = NULL;
+
+    return l;
 }
 
 int lista_vazia(Lista *l){
@@ -259,12 +276,10 @@ GrafoLA* iniciar_grafoLA(int v){
     G->cor = (int*) malloc(sizeof(int) * v);
     G->pai = (int*) malloc(sizeof(int) * v);
     G->d = (int*) malloc(sizeof(int) * v);
-    G->f = (int*) malloc(sizeof(int) * v);
     G->adj = iniciar_LA(G->V);
 
     return G;
 }
-
 
 
 int aresta_existeLA(GrafoLA* G, int v1, int v2){
@@ -294,44 +309,6 @@ void remover_arestaLA(GrafoLA* G, int v1, int v2){
 }
 
 
- int** adjacentes(GrafoMA* grafo)
- {
-     int i, j, k, tam;
-     int **mat;
-
-     tam = grafo->V;
-     mat = (int**) malloc(sizeof(int*) * tam);
-
-     for(i = 0; i < tam; i++)
-     {
-         mat[i] = (int*) calloc(tam, sizeof(int));
-     }
-
-     for(i = 0; i < tam; i++)
-     {
-         for(j = 0, k = 0; j < tam; j++)
-         {
-             if(grafo->mat[i][j] != 0)
-             {
-                 mat[i][k] = j + 1;
-                 k++;
-             }
-         }
-     }
-
-     for(i = 0; i < tam; i++)
-     {
-         for(j = 0, k = 0; j < tam; j++)
-         {
-             printf("%d ", mat[i][j]);
-         }
-
-         printf("\n");
-     }
-
-    return mat;
- }
-
 void imprimir_arestasLA(GrafoLA* G){
     int i;
     Cell *aux;
@@ -349,75 +326,73 @@ void imprimir_arestasLA(GrafoLA* G){
         }
 }
 
-int buscaVertice(int i, int* cor, int tempo, int* d, int* f, int* pai, int** mat)
- {
-     int j, k;
 
-     cor[i] = 1;
-     tempo = tempo + 1;
-     d[i] = tempo;
+void liberarGLA(GrafoLA* G){
+    int i;
 
-     for(j = (mat[i][0] - 1), k = 0; mat[i][k] != 0; k++, j = (mat[i][k] - 1))
-     {
-         if(cor[j] == 0)
-         {
-             pai[j] = i;
-             tempo = buscaVertice(j, cor, tempo, d, f, pai, mat);
-         }
-     }
+    if (G != NULL){
+        for (i = 0; i < G->V; i++)
+            liberar_lista(G->adj[i]);
 
-     cor[i] = 2;
-     f[i] = tempo = tempo + 1;
+        free(G);
+    }
+}
 
-     return tempo;
- }
+static int valida_vertice(GrafoLA* G, int v){
+    return (v >= 0) && (v < G->V);
+}
 
- void buscaLargura(GrafoMA* grafo)
- {
-     int i, tam, tempo;
-     int *cor, *pai, *d, *f;
-     int **mat;
-
-     tam = grafo->V;
-
-     cor = (int*) malloc(sizeof(int) * tam);
-     pai = (int*) malloc(sizeof(int) * tam);
-     d = (int*) calloc(tam, sizeof(int));
-     f = (int*) calloc(tam, sizeof(int));
-
-     tempo = 0;
-     mat = adjacentes(grafo);
-
-     for(i = 0; i < tam; i++)
-     {
-        cor[i] = 0;
-        pai[i] = INT_MAX;
-     }
-
-     for(i = 0; i < tam; i++)
-     {
-         if(cor[i] == 0)
-         {
-             buscaVertice(i, cor, tempo, d, f, pai, mat);
-         }
-     }
-
-     printf("v d f p\n");
-
-     for(i = 0; i < tam; i++)
-     {
-         printf("%d %d %d ", i, d[i], f[i]);
-
-         if(pai[i] == INT_MAX)
-         {
-             printf("-\n");
-         }
-         else
-         {
-             printf("%d\n", pai[i]);
-         }
-     }
- }
+void busca_largura(GrafoLA *G, int s){
+    int u, v;
+    
+    if (valida_vertice(G, s)){
+        for (v = 0; v < G->V; v++){
+            G->cor[v] = 0;
+            G->pai[v] = -1;
+            G->d[v] = INT_MAX;
+        }
+        
+        G->cor[s] = 1;
+        G->d[s] = 0;
+        
+        FilaE *f = criar_filaE();
+        
+        enfileirar(s, f);
+        
+        while (!filaE_vazia(f)){
+            u = desenfileirar(f);
+            
+            for (v = 0; v < G->V; v++){
+                if ((aresta_existeLA(G, v, u) != 0) && (G->cor[v] == 0)){
+                    G->cor[v] = 1;
+                    G->d[v] = G->d[u] + 1;
+                    G->pai[v] = u;
+                    enfileirar(v, f);
+                }
+            }
+            
+            G->cor[u] = 2;
+        }
+        
+        printf("v d p\n");
+        
+        for (v = 0; v < G->V; v++){
+            printf("%d ", v);
+            
+            if (G->d[v] < INT_MAX)
+                printf("%d ", G->d[v]);
+            else
+                printf("- ");
+            
+            if (G->pai[v] >= 0)
+                printf("%d\n", G->pai[v]);
+            else
+                printf("-\n");
+        }
+        
+        liberar_filaE(f);
+    }
+}
 
 
 int main(){
@@ -434,9 +409,7 @@ int main(){
         }
         while(item != -1);
     }
-    GrafoMA * GM = LAtoMA(LA);
-
-    adjacentes(GM);
-   
-    
+    int a;
+    scanf("%d", &a);
+    busca_largura(LA,a );
 }
