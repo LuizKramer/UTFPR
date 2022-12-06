@@ -153,5 +153,6 @@ int main(){
         scanf("%d", &item);
       tree = inserirAVL(tree, item, &g);
     }
+	imprimirInfix(tree);
     printf("%d", balanceamento(tree));
 }

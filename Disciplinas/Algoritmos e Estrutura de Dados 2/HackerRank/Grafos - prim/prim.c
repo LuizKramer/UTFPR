@@ -427,7 +427,7 @@ GrafoMA * LAtoMA(GrafoLA * LA){
 }
 
 
-void prim(GrafoMA *G, int s, int n, int * peso){
+void prim(GrafoMA *G, int s, int n, int peso[][n], int vertices){
     int u, v;
     FilaE *f = criar_filaE();
     if (valida_vertice(G, s)){
@@ -445,18 +445,18 @@ void prim(GrafoMA *G, int s, int n, int * peso){
             G->nafila[u] = 0;
             
             for (v = 0; v < G->V; v++){
-                if ((G->mat[u][v] != 0) && (G->nafila[v]) && (peso[u] < G->key[v])){
-                    G->key[v] = G->mat[u][v];
+                if ((G->mat[u][v] != 0) && (G->nafila[v]) && (peso[u][v] < G->key[v])){
+                    G->key[v] = peso[u][v];
                     G->pai[v] = u;
                 }
             }
         }
         
-        for (v = 0; v < n; v++){
+        for (v = 0; v < vertices; v++){
             printf("%d: ", v);
 
             if (G->pai[v] >= 0)
-                v != 7?printf("%d\n", G->pai[v]):printf("6\n");
+               printf("%d\n", G->pai[v]);
             else
                 printf("-\n");
         }
@@ -472,14 +472,19 @@ int main(){
     int vertices;
     scanf("%d", &vertices);
     scanf("%d", &N);
-    int peso[N];
+    int peso[N][N];
     GrafoLA * LA = iniciar_grafoLA(N);
     int aux;
+    for (int i =0; i <N ; i++){
+        for(int j=0; j<N; j++){
+            peso[i][j]= INT_MAX;
+        }
+    }
     for(int i = 0; i < N; i++){
         scanf("%d %d %d", &v1, &v2, &aux);
-        peso[i] = aux;
+        peso[v1][v2] = aux;
         inserir_arestaLA(LA, v1, v2);
     }
     GrafoMA * MA = LAtoMA(LA);
-    prim(MA, 0, vertices, peso);
+    prim(MA,0,N, peso, vertices);
 }
