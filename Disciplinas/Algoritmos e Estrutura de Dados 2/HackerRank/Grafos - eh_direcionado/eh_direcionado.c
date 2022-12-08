@@ -317,13 +317,7 @@ void eh_direcionado(GrafoLA * LA){
             }
 
             
-        }
-        if(i == LA->V && j==LA->V)
             printf("nao direcionado");
-
-
-
-        
     }
 }
 
@@ -346,3 +340,6 @@ int main(){
 
 }
 
+
+        }
+        if(i == LA->V && j==LA->V)
